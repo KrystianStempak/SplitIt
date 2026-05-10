@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SplitIt - Mobilne Rozliczenia</title>
+    
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0056b3">
+</head>
+<body>
+    <header>
+        <button id="btn-back" class="hidden">Wróć</button>
+        <h1>SplitIt</h1>
+        <div style="width: 60px;"></div> </header>
+
+    <main>
+        <section id="view-groups">
+            <h2>Twoje grupy</h2>
+            <div id="groups-list"></div>
+            <button id="btn-new-group" class="btn-primary">Utwórz nową grupę</button>
+        </section>
+
+        <section id="view-group-details" class="hidden">
+            <h2 id="group-title">Nazwa Grupy</h2>
+            
+            <div class="tabs">
+                <button id="tab-expenses" class="active">Wydatki</button>
+                <button id="tab-summary">Podsumowanie</button>
+            </div>
+
+            <div id="content-expenses">
+                <div id="expenses-list"></div>
+                <button id="btn-add-expense" class="btn-primary">Dodaj wydatek</button>
+            </div>
+
+            <div id="content-summary" class="hidden">
+                <h3>Twój bilans: <span id="my-total-balance">0 PLN</span></h3>
+                <ul id="transfers-list" class="list"></ul>
+            </div>
+        </section>
+    </main>
+
+    <div id="modal-group" class="modal hidden">
+        <div class="modal-content">
+            <h3>Nowa Grupa</h3>
+            <label>Nazwa grupy:</label>
+            <input type="text" id="input-group-name" placeholder="np. Wyjazd w Tatry">
+            
+            <label>Członkowie (po przecinku):</label>
+            <input type="text" id="input-group-members" placeholder="np. Jan, Anna, Tomek">
+            
+            <div class="modal-actions">
+                <button id="btn-cancel-group" class="btn-secondary">Anuluj</button>
+                <button id="btn-save-group" class="btn-primary">Utwórz</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-expense" class="modal hidden">
+        <div class="modal-content">
+            <h3>Dodaj Wydatek</h3>
+            <input type="text" id="input-exp-title" placeholder="Za co?">
+            <input type="number" id="input-exp-amount" placeholder="Kwota (PLN)">
+            
+            <label>Zdjęcie paragonu:</label>
+            <input type="file" id="input-exp-photo" accept="image/*" capture="camera">
+            
+            <label>Kto płacił?</label>
+            <select id="select-exp-payer"></select>
+            
+            <label>Podział na:</label>
+            <div id="checkboxes-exp-split"></div>
+            
+            <div class="modal-actions">
+                <button id="btn-cancel-expense" class="btn-secondary">Anuluj</button>
+                <button id="btn-save-expense" class="btn-primary">Zapisz</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modal-receipt" class="modal hidden" onclick="this.classList.add('hidden')">
+        <div class="modal-content">
+            <img id="receipt-preview" src="" style="width: 100%; border-radius: 8px;">
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+</body>
+</html>

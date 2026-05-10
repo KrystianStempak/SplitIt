@@ -1,0 +1,15 @@
+{
+  "name": "SplitIt - Rozliczenia",
+  "short_name": "SplitIt",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#f4f7f6",
+  "theme_color": "#0056b3",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/2454/2454282.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
