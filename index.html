@@ -11,12 +11,29 @@
     <meta name="theme-color" content="#0056b3">
 </head>
 <body>
-    <header>
+    <header class="hidden" id="app-header">
         <button id="btn-back" class="hidden">Wróć</button>
         <h1>SplitIt</h1>
         <div style="width: 60px;"></div> </header>
 
-    <main>
+    <section id="view-login" style="max-width: 400px; margin: 50px auto; text-align: center; padding: 20px;">
+            <h2>Zaloguj się do SplitIt</h2>
+            <div class="card" style="margin-top: 20px; padding: 20px;">
+                <input type="email" id="input-email" placeholder="E-mail" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                <input type="password" id="input-password" placeholder="Hasło" style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
+                
+                <button id="btn-login-email" class="btn-primary" style="margin-top: 0;">Zaloguj / Zarejestruj się</button>
+                
+                <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+                
+                <button id="btn-login-google" class="btn-secondary" style="background-color: white; border: 1px solid #ddd; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google" style="width: 20px;">
+                    Zaloguj przez Google
+                </button>
+            </div>
+        </section>
+
+    <main class="hidden" id="app-main">
         <section id="view-groups">
             <h2>Twoje grupy</h2>
             <div id="groups-list"></div>
@@ -87,12 +104,13 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <script type="module" src="script.js"></script>
     
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('sw.js');
         }
     </script>
+    
 </body>
 </html>
